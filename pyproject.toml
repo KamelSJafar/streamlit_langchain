@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "embedchain-streamlit-app"
+version = "0.1.0"
+description = "A template embedchain Streamlit App with Docker"
+authors = ["Amjad Raza"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "embedchain-streamlit-app"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+embedchain = "0.0.10"
+streamlit = "^1.24.0"
+streamlit-chat = "^0.0.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
