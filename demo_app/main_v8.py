@@ -41,14 +41,16 @@ def summarize_document(client, text):
         response = client.chat.completions.create(
             model="meta-llama/Meta-Llama-3-70B-Instruct",
             messages=[
-                {"role": "system", "content": """Act as Sentiment analysis system and I will give you a context from the Article you will give me the response in JSON format for example:
-        {"topic":"sport or media or political or etc" ,"related_to_UAE": "true or false", 
+                {"role": "system", "content": """Act as Data Analysis System,Your answer must be in the same language as the article. I will give you an Article you will give me the response in JSON format for example:
+        {"topic":"sport or media or political or etc" ,"related_to_UAE": "true or false",
+        "related_to_UAE_percentage": "Percentage of the article being related to the United Arab Emirates the language of the answer MUST be as the Article language", 
         "summary":"short summary about the Article"
         "sentiment":{"positive": {"score": 60, "example":"positive sentence from the article"}, 
         "negative":{"score": 30, "example":"negative sentence from the article"}, 
         "neutral":{"score": 10, "example":"neutral sentence from the article"}}, 
         "NER":"all NER mentioned in the article"}}
                     Wrap the JSON Response inside <RES> tags
+                 Your Answer Must be in the same language of the Article.
                     """},
                 {"role": "user", "content": text}
             ],
