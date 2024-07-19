@@ -56,12 +56,10 @@ def summarize_document(client, text):
             ],
             
         )
-        print(response.choices[0].message.content)
-        friars = extract_summarization_response(response.choices[0].message.content)
-        print(friars)
+        answer = extract_summarization_response(response.choices[0].message.content)
         
 
-        return friars
+        return answer
     except Exception as e:
         st.error(f"An error occurred: {e}")
         return None
@@ -79,12 +77,9 @@ def main():
         urls = [web_page_1]
         docs = load_document(urls)
 
-        # print (docs[0].page_content)
-        # Summarize the document using OpenAI client
+
         client = setup_openai_client()
         summary = summarize_document(client, docs[0].page_content)
-        print (summary)
-        print ("***********************************************************************")
 
         if summary:
             st.write("Summarized document:")
